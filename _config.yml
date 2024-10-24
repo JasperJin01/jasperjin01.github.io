@@ -3,3 +3,21 @@ description: A starter template for a Jeykll site using the Just the Docs theme!
 theme: just-the-docs
 
 url: https://jasperjin01.github.io
+
+nav_enabled: true
+
+favicon_ico: "favicon.ico"
+
+callouts:
+  warning:
+    title: 注意
+    color: red
+  fixme:
+    title: 疑问
+    color: yellow
+  note:
+    title: 笔记
+    color: blue
+  tip:
+    title: 注意
+    color: green
