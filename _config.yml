@@ -1,5 +1,5 @@
 title: 老哥的技术文档
-description: A starter template for a Jeykll site using the Just the Docs theme!
+description: 老哥的技术文档!
 theme: just-the-docs
 
 url: https://jasperjin01.github.io
@@ -21,3 +21,7 @@ callouts:
   tip:
     title: 注意
     color: green
+
+aux_links:
+  "老哥的GitHub链接":
+    - "https://github.com/JasperJin01"

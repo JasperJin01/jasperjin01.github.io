@@ -447,6 +447,10 @@ thread1和thread2的区别在于，当main线程调用interrupt()中断时，**t
 
 
 
+### 可重入性
+
+
+
 
 
 ### 两阶段锁
