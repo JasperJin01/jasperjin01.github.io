@@ -1,7 +1,7 @@
 ---
 title: 电商项目总结基础篇
 layout: default
-parent: 电商
+parent: 谷粒商城
 nav_order: 1
 ---
 
@@ -317,9 +317,9 @@ public class MainApplication {
 ```shell
 brew install node
 
-node --version
+node --version # v21.7.3
 # npm是前端的包管理工具，类似maven
-npm --version
+npm --version  # 10.5.0
 
 npm config set registry https://registry.npmmirror.com
 
@@ -703,7 +703,7 @@ java.lang.AbstractMethodError: Receiver class org.springframework.cloud.netflix.
 > 概括：在后端引入依赖，创建bootstrap.properties，
 > 在nacos-server端
 
-
+**<font color=blue>引入依赖</font>**
 
 ```xml
 <dependency>
@@ -712,24 +712,20 @@ java.lang.AbstractMethodError: Receiver class org.springframework.cloud.netflix.
 </dependency>
 ```
 
-
-
-
+**<font color=blue>在`bootstrap.properties`中添加配置</font>**（bootstrap.properties是在SpringBoot中的设定，会比application.properties更早的进行载入）
 
 ```properties
 spring.application.name=mall-coupon
 spring.cloud.nacos.config.server-addr=172.16.251.130:8848
+spring.cloud.nacos.config.namespace=<xx-xxx-xxxx-xxx...xxx>
 ```
-
-
-
-
 
 **命名空间 namespace**：用于 **环境隔离**，将不同的项目、租户或环境的配置完全隔离。是 Nacos 中最顶层的隔离维度。在项目中，把每个微服务的配置放在了单独的命名空间中管理。
 
+* <font color=red>配置中必须指定命名空间！</font>
+* 启动后，会在配置的命名空间中寻找**<font color=red>组(Group)</font>**。默认的组为DEFAULT_GROUP，也可以通过`spring.cloud.nacos.config.group`指定组。
 
-
-添加额外的
+**<font color=blue>添加额外的配置文件</font>**
 
 ```properties
 spring.cloud.nacos.config.ext-config[0].data-id=datasource.yml
@@ -745,12 +741,22 @@ spring.cloud.nacos.config.ext-config[2].group=dev
 spring.cloud.nacos.config.ext-config[2].refresh=true
 ```
 
+这种方式指定了配置命名空间下的<font color=red>配置文件(Data Id)和组(Group)</font>，Data Id在nacos服务端设置，相当于配置的文件名。
+
+**<font color=blue>动态获取配置</font>**
 
 
-yaml写法：
 
-```yaml
-```
+
+
+**<font color=blue>赋值</font>**
+
+| 特性         | `@ConfigurationProperties`           | `@Value`       |
+| ------------ | ------------------------------------ | -------------- |
+| **绑定机制** | 基于类的字段绑定，支持嵌套、批量绑定 | 单个属性注入   |
+| **类型安全** | 支持强类型和复杂对象                 | 仅支持简单值   |
+| **校验**     | 支持使用校验注解进行参数校验         | 不支持         |
+| **使用场景** | 绑定配置文件的一组相关属性到一个类   | 注入单个配置值 |
 
 
 
@@ -767,7 +773,7 @@ yaml写法：
  *             <groupId>com.alibaba.cloud</groupId>
  *             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
  *         </dependency>
- * 2）、创建一个bootstrap.properties。
+ * 2）、创建一个 bootstrap.properties。
  *      bootstrap.properties是在SpringBoot中的设定，会比application.properties更早的进行载入
  *      spring.application.name=mall-coupon
  *      spring.cloud.nacos.config.server-addr=127.0.0.1:8848
@@ -939,6 +945,25 @@ vm.name="李四"
 
 
 # 【项目】三级分类功能
+
+
+
+
+
+
+
+# 【项目】后台管理系统类别前端
+
+
+
+```shell
+# 启动vue前端工程
+npm run dev
+```
+
+
+
+
 
 
 
