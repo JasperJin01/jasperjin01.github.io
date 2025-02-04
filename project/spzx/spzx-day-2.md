@@ -1186,7 +1186,7 @@ public interface SysUserMapper {
 
     <!-- 用于select查询公用抽取的列 -->
     <sql id="columns">
-        id,username userName ,password,name,phone,avatar,description,status,create_time,update_time,is_deleted
+id,username,password,name,phone,avatar,description,status,create_time,update_time,is_deleted
     </sql>
 
     <select id="selectByUserName" resultType="com.atguigu.spzx.model.entity.system.SysUser">

@@ -1,7 +1,7 @@
 ---
 title: JVM
 layout: default
-
+parent: Java核心技术
 ---
 
 # JVM
